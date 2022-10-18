@@ -1,0 +1,78 @@
+version: '3.8'
+
+volumes:
+  pgdata:
+  static:
+  media:
+
+services:
+  # Веб-приложение Django (env добавить)
+  django:
+    build:
+      context: .
+    ports:
+      - '8000:8000'
+    container_name: django
+    env_file:
+      - docker/env/.env.prod
+    volumes:
+      - ./:/app
+      - static:/app/static
+      - media:/app/media
+    depends_on:
+      - postgres
+      - redis
+    command: sh -c "python manage.py collectstatic --no-input &&
+                    python manage.py makemigrations &&
+                    python manage.py migrate &&
+                    gunicorn --workers=4 --reload --max-requests=1000 backend.wsgi -b 0.0.0.0:8000"
+  # Веб-сервер NGINX
+  nginx:
+    build: docker/nginx/
+    container_name: nginx
+    restart: always
+    volumes:
+      - ./docker/nginx/:/etc/nginx/conf.d
+      - ./docker/letsencrypt:/etc/letsencrypt
+      - static:/app/static
+      - media:/app/media
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - django
+    depends_on:
+      - django
+  # База данных PostgreSQL
+  postgres:
+    image: postgres:buster
+    container_name: postgres
+    restart: always
+    env_file:
+      - docker/env/.env.prod
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+  # База кэширования Redis
+  redis:
+    image: redis:buster
+    container_name: redis
+    env_file:
+      - docker/env/.env.prod
+    expose:
+      - 6379
+    volumes:
+      - ./docker/redis/data:/data
+      - /.docker/redis/etc/redis.conf:/usr/local/etc/redis/redis.conf
+  # Асинхронный обработчик
+  celery-worker:
+    build: .
+    container_name: celery-worker
+    restart: always
+    env_file:
+      - docker/env/.env.prod
+    volumes:
+      - ./:/app
+      - media:/app/media
+    command: celery -A backend worker --loglevel=info --logfile=docker/logs/celery-worker.log
+    depends_on:
+      - redis

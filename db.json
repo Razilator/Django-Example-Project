@@ -1,0 +1,326 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$390000$26YZwroGm2uKDTdORSA1dD$xFGI0v63RXnMHjlBdGIZNCYfJngO/RAbIxScf4QdrDw=",
+        "last_login": "2022-09-25T16:39:49.475Z",
+        "is_superuser": true,
+        "username": "Razilator",
+        "first_name": "",
+        "last_name": "",
+        "email": "volkodav2312@inbox.ru",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-09-17T16:39:03.130Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$390000$xEbQ2wsOAUAHWlPwSfZVht$SKpCllBUGMZQ6ojLxe/x7L2xPPMcX62XPPnlzRSC5k8=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Nastya",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-09-22T06:56:06.765Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$390000$nqPIrU4cTf7lst2WvtWmsJ$Gl8k45ra5Wo64IaQ79fu5zbvI/XuZmkfIXZ5wLRHXvU=",
+        "last_login": "2022-09-22T18:17:41.945Z",
+        "is_superuser": false,
+        "username": "GiuliaMate",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-09-22T06:56:24.003Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$390000$QXnP7IbECi9sFPvNAS0mCB$S3zI1sIEaUEyqqpOBuOs4XSNACsAcZ3slPFj9Eiuczc=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "sanonator",
+        "first_name": "Сашка",
+        "last_name": "Шляпик",
+        "email": "volkodav2312@bk.ru",
+        "is_staff": false,
+        "is_active": false,
+        "date_joined": "2022-09-25T16:40:46.924Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sites.site",
+    "fields": {
+        "domain": "example.com",
+        "name": "example.com"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1,
+    "fields": {
+        "name": "Python",
+        "slug": "python"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 2,
+    "fields": {
+        "name": "Django",
+        "slug": "django"
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 1,
+    "fields": {
+        "tag": 1,
+        "content_type": [
+            "blog",
+            "article"
+        ],
+        "object_id": 1
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 2,
+    "fields": {
+        "tag": 2,
+        "content_type": [
+            "blog",
+            "article"
+        ],
+        "object_id": 2
+    }
+},
+{
+    "model": "blog.article",
+    "pk": 1,
+    "fields": {
+        "meta_title": "Тестовая статья по Python",
+        "meta_description": "Тестовая статья по Python",
+        "meta_keywords": "",
+        "title": "Тестовая статья по Python",
+        "slug": "testovaya-statya-po-python",
+        "category": 1,
+        "short_description": "<p>Тестовая статья по Python</p>",
+        "full_description": "<p>Тестовая статья по Python</p>",
+        "author": [
+            "Razilator"
+        ],
+        "updated_by": null,
+        "created_at": "2022-09-17T16:40:24.164Z",
+        "updated_at": "2022-09-17T16:40:24.164Z",
+        "reason": "",
+        "is_fixed": false,
+        "is_published": true,
+        "thumbnail": "images/thumbnails/2022/09/17/img-testovaya-statya-po-python.jpg"
+    }
+},
+{
+    "model": "blog.article",
+    "pk": 2,
+    "fields": {
+        "meta_title": "Тестовая статья по Django",
+        "meta_description": "Тестовая статья по Django",
+        "meta_keywords": "",
+        "title": "Тестовая статья по Django",
+        "slug": "testovaya-statya-po-django",
+        "category": 2,
+        "short_description": "<p>Тестовая статья по Django</p>",
+        "full_description": "<p>Тестовая статья по Django</p>",
+        "author": [
+            "Razilator"
+        ],
+        "updated_by": null,
+        "created_at": "2022-09-17T16:41:04.768Z",
+        "updated_at": "2022-09-17T16:41:04.768Z",
+        "reason": "",
+        "is_fixed": false,
+        "is_published": true,
+        "thumbnail": "images/thumbnails/2022/09/17/img-testovaya-statya-po-django.png"
+    }
+},
+{
+    "model": "blog.category",
+    "pk": 1,
+    "fields": {
+        "meta_title": "Python",
+        "meta_description": "Python",
+        "meta_keywords": "",
+        "title": "Python",
+        "slug": "python",
+        "description": "Python",
+        "parent": null,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 2,
+        "level": 0
+    }
+},
+{
+    "model": "blog.category",
+    "pk": 2,
+    "fields": {
+        "meta_title": "Django",
+        "meta_description": "Django",
+        "meta_keywords": "",
+        "title": "Django",
+        "slug": "django",
+        "description": "Django",
+        "parent": null,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 1,
+        "level": 0
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 1,
+    "fields": {
+        "article": 1,
+        "author": [
+            "Razilator"
+        ],
+        "content": "Тестовый комментарий",
+        "created_at": "2022-09-17T16:41:22.336Z",
+        "updated_at": "2022-09-17T16:41:22.336Z",
+        "is_published": true,
+        "is_fixed": false,
+        "parent": null,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 1,
+        "level": 0
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 2,
+    "fields": {
+        "article": 2,
+        "author": [
+            "Razilator"
+        ],
+        "content": "Тестовый комментарий в Django",
+        "created_at": "2022-09-17T16:41:32.262Z",
+        "updated_at": "2022-09-17T16:41:32.262Z",
+        "is_published": true,
+        "is_fixed": false,
+        "parent": null,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 2,
+        "level": 0
+    }
+},
+{
+    "model": "blog.rating",
+    "pk": 1,
+    "fields": {
+        "article": 1,
+        "author": [
+            "Razilator"
+        ],
+        "created_at": "2022-09-20T17:49:04.757Z",
+        "value": 1,
+        "ip_address": null
+    }
+},
+{
+    "model": "blog.rating",
+    "pk": 2,
+    "fields": {
+        "article": 2,
+        "author": [
+            "Razilator"
+        ],
+        "created_at": "2022-09-20T17:49:06.634Z",
+        "value": -1,
+        "ip_address": null
+    }
+},
+{
+    "model": "system.profile",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "Razilator"
+        ],
+        "slug": "razilator",
+        "bio": "",
+        "avatar": "",
+        "date_birthday": null,
+        "following": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "system.profile",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "Nastya"
+        ],
+        "slug": "nastya",
+        "bio": "",
+        "avatar": "",
+        "date_birthday": null,
+        "following": []
+    }
+},
+{
+    "model": "system.profile",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "GiuliaMate"
+        ],
+        "slug": "giuliamate",
+        "bio": "",
+        "avatar": "",
+        "date_birthday": null,
+        "following": [
+            1
+        ]
+    }
+},
+{
+    "model": "system.profile",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "sanonator"
+        ],
+        "slug": "sanonator",
+        "bio": "",
+        "avatar": "",
+        "date_birthday": null,
+        "following": []
+    }
+}
+]

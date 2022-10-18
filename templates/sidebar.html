@@ -1,0 +1,23 @@
+{% load blog_tags %}
+
+<div class="card border-0">
+    <div class="card-body">
+         <h6 class="card-title">
+            Количество статей на сайте
+        </h6>
+        <div class="card-text">
+            В Django Blog добавлено материалов: {% total_articles %}
+        </div>
+    </div>
+</div>
+
+<div class="card border-0">
+    <div class="card-body">
+         <h6 class="card-title">
+            Последние комментарии на сайте
+        </h6>
+        <div class="card-text">
+            {% show_latest_comments 10 %}
+        </div>
+    </div>
+</div>

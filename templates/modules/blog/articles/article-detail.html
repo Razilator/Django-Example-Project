@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="card border-0 mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <figure>
+                        <img src="{{ article.get_thumbnail }}" width="200" alt="{{ article.title }}">
+                    </figure>
+                </div>
+                <div class="col-md-8">
+                     <h5 class="card-title">
+                        {{ article.title }}
+                    </h5>
+                    <small class="card-subtitle">
+                        {{ article.created_at }} / {{ article.category }}
+                    </small>
+                    <div class="card-text">
+                        {{ article.full_description|safe }}
+                    </div>
+                     <hr/>
+                      Добавил: <img src="{{ article.author.profile.get_avatar }}" class="rounded-circle" width="26" height="26"/> {{ article.author }}
+                    <hr/>
+                    <strong>Теги записи</strong>: {% for tag in article.tags.all %} <a href="{% url 'article-list-by-tags' tag.slug %}">{{ tag }}</a>, {% endfor %}
+                    <hr/>
+                    {% if article.reason %}{{ article.reason }} / обновил: {{ article.updated_by }}{% endif %}
+                    <hr/>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card border-0">
+        <div class="card-body">
+            <h5 class="card-title">
+                Комментарии
+            </h5>
+            {% include 'modules/blog/comments/comments-list.html' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="card mb-2 border-0">
+    <div class="card-body">
+        <div class="card-title">
+           Похожие статьи
+        </div>
+        <div class="card-text">
+            <ul class="similar-articles">
+                {% for sim_article in similar_articles %}
+                    <li><a href="{{ sim_article.get_absolute_url }}">{{ sim_article.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'custom/js/article-detail.js' %}"></script>
+{% endblock %}

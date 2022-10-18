@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+    {% for article in articles %}
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <figure class="mb-0">
+                        <img src="{{ article.get_thumbnail }}" class="img-fluid h-100" alt="{{ article.title }}">
+                    </figure>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>
+                        <a class="card-subtitle" href="{% url 'article-by-cat' article.category.pk article.category.slug %}">#{{ article.category }}</a> / <time>{{ article.created_at }}</time>
+                        <p class="card-text">
+                            {{ article.short_description|safe }}
+                        </p>
+                        <div class="card-text">
+                              <button class="btn shadow-sm btn-sm btn-success btn-like p-1" data-id="{{ article.pk }}" data-action="like" type="button">+1 </button>
+                              <button class="btn shadow-sm btn-sm btn-danger btn-dislike p-1" data-id="{{ article.pk }}" data-action="dislike" type="button">-1 </button>
+                              <button class="btn shadow-sm btn-sm btn-primary btn-sum-rating p-1" type="button" data-rating="{{ article.pk }}">{{ article.get_rating_sum }} </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'custom/js/article-list.js' %}"></script>
+{% endblock %}

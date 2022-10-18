@@ -1,0 +1,7 @@
+<ul>
+{% for comment in latest_comments %}
+  <li>
+    <p>{{ comment.author }} / {{ comment.content }}</p>
+  </li>
+{% endfor %}
+</ul>

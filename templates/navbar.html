@@ -1,0 +1,37 @@
+{% load static %}
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+          <img class="bi me-2" src="{% static 'images/django.png' %}" width="40" height="40" role="img" aria-label="Project" alt="Django Blog"/>
+        </a>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">Главная</a></li>
+          <li><a href="{% url 'article-list' %}" class="nav-link px-2 link-dark">Статьи</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="get" action="{% url 'search' %}">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name='do' autocomplete="off" id="search">
+        </form>
+
+        {% if request.user.is_authenticated %}
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ request.user.profile.get_avatar }}" alt="{{ request.user }}" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" style="">
+            <li><a class="dropdown-item" href="{% url 'article-create-view' %}">Добавить статью</a></li>
+            <li><a class="dropdown-item" href="{% url 'profile' request.user.profile.slug %}">Мой профиль</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Выход</a></li>
+          </ul>
+        </div>
+        {% else %}
+            <ul class="nav ">
+              <li><a href="{% url 'register' %}" class="nav-link px-2 link-secondary">Регистрация</a></li>
+              <li><a href="{% url 'login' %}" class="nav-link px-2 link-dark">Вход</a></li>
+            </ul>
+        {% endif %}
+      </div>
+    </div>
+  </header>
