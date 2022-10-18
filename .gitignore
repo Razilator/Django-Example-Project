@@ -1,0 +1,7 @@
+.idea
+__pycache__/
+venv/
+static/
+media/images/attachments/2022/
+media/images/avatars/2022/
+media/images/thumbnails/2022/
